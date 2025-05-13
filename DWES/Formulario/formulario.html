@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="formulario.css">
+    <title>Formulario</title>
+</head>
+<body>
+    <form action="recoger.php" method="post">
+        <fieldset>
+            <label for="nombre">Nombre: </label>
+            <input type="text" name="nombre" id="nombre" maxlength="100">
+
+            <label for="correo">Correo: </label>
+            <input type="email" name="correo" id="correo">
+
+            <div id="optativas">
+                <input type="checkbox" name="optativa[]" value="Optativa1" id="optativa1">
+                <label for="optativa1">Optativa1</label>
+
+                <input type="checkbox" name="optativa[]" value="Optativa2" id="optativa2">
+                <label for="optativa2">Optativa2</label>
+
+                <input type="checkbox" name="optativa[]" value="Optativa3" id="optativa3">
+                <label for="optativa3">Optativa3</label>
+            </div>
+
+            <div id="talleres">
+                <input type="radio" name="taller" value="Taller1" id="taller1">
+                <label for="taller1">Taller1</label>
+
+                <input type="radio" name="taller" value="Taller2" id="taller2">
+                <label for="taller2">Taller2</label>
+
+                <input type="radio" name="taller" value="Taller3" id="taller3">
+                <label for="taller3">Taller3</label>
+            </div>
+
+            <input type="reset" value="Borrar" id="borrar">
+            <input type="button" value="Enviar" id="enviar">
+        </fieldset>
+    </form>
+</body>
+</html>

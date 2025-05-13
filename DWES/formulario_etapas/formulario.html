@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <form action="recoger.php" method="post">
+        <fieldset>
+
+            <label for="nombre">Nombre: </label>
+            <input type="text" name="nombre" id="nombre" maxlength="100">
+
+            <div id="etapas">
+
+                <label for="optativa1">Etapa 1</label>
+                <input type="checkbox" name="etapa[]" value="Optativa1" id="optativa1">
+                
+                <label for="optativa2">Etapa 2                      </label>
+                <input type="checkbox" name="etapa[]" value="Optativa2" id="optativa2">
+                
+                <label for="optativa3">Etapa 3</label>
+                <input type="checkbox" name="etapa[]" value="Optativa3" id="optativa3">
+                
+            </div>
+
+            <input type="reset" value="Borrar" id="borrar">
+            <input type="button" value="Enviar" id="enviar">
+        </fieldset>
+    </form>
+</body>
+</html>
+
+</body>
+</html>

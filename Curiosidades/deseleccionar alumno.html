@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reiniciar selección al repetir opción</title>
+  <style>
+    option[placeholder] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <select class="custom-select">
+    <option value="" selected placeholder>Seleccione una opción</option>
+    <option value="1">Opción 1</option>
+    <option value="2">Opción 2</option>
+    <option value="3">Opción 3</option>
+  </select>
+
+  <script>
+    document.querySelectorAll('.custom-select').forEach(select => {
+      let lastSelectedValue = select.value; // Guardamos la última opción seleccionada
+
+      // Al cambiar la selección, guardamos el nuevo valor
+      select.addEventListener('change', () => {
+        const currentValue = select.value;
+
+        // Si seleccionamos la misma opción que ya estaba seleccionada, reseteamos
+        if (currentValue === lastSelectedValue && currentValue !== "") {
+          select.selectedIndex = 0; // Reiniciamos al valor vacío
+          lastSelectedValue = ""; // Limpiamos el valor guardado
+        } else {
+          lastSelectedValue = currentValue; // Guardamos la nueva opción seleccionada
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

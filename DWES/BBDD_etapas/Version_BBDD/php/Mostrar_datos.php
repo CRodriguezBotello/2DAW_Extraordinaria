@@ -15,15 +15,10 @@
 </head>
 <body>
     <h1>Etapas:</h1>
-    <form action="" method="post">
         <?php
             while($fila=$resultado->fetch_assoc()){
-                echo '<input type="checkbox" name="etapas[]" value="' .$fila["NombreEtapas"]. '"> ' .$fila["NombreEtapas"]. '<br/>';
+                echo '<ul><li>' .$fila["NombreEtapas"]. '</li></ul>';
             }
         ?>
-        <br/>
-        <input type="submit" value="Confirmar">
-        <input type="reset" value="Reiniciar">
-    </form>
 </body>
 </html>

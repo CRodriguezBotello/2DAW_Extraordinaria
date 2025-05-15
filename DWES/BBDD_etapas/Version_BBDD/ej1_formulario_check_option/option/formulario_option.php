@@ -1,9 +1,9 @@
 <?php
-    require_once '../config/conexion.php';
+    require_once '../../config/conexion_1n.php';
     $conexion= new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
     $conexion->set_charset("utf8");
 
-    $resultado= "SELECT NombreEtapas FROM Etapas";
+    $resultado= "SELECT IdEtapas, NombreEtapas FROM Etapas";
     $resultado=$conexion->query($resultado);    
 ?>
 <!DOCTYPE html>
@@ -15,17 +15,20 @@
 </head>
 <body>
     <h1>Añadir Actividad</h1>
-    <form action="" method="post">
+    <form action="insertar_actividades.php" method="post">
         <label for="nombre">Actividad: </label><br/>
         <input type="text" name="nombre"><br/><br/>
 
         <label for="etapas">Etapas:</label><br/>
+        <select name="etapas">
         <?php
             while($fila=$resultado->fetch_assoc()){
-                echo '<input type="checkbox" name="etapas[]" value='.$fila["NombreEtapas"].'>' .$fila["NombreEtapas"]. '<br/>';
+                echo '<option value='.$fila["IdEtapas"].'>'.$fila["NombreEtapas"].'</option>';
             }
         ?>
+        </select>
         <br/>
+        <br>
         <input type="submit" value="Enviar">
         <input type="reset" value="Reiniciar">
     </form>

@@ -14,11 +14,22 @@
     <title>Etapas Desde BBDD</title>
 </head>
 <body>
-    <h1>Etapas:</h1>
+    <h1>Añadir Actividad</h1>
+    <form action="" method="post">
+        <label for="nombre">Actividad: </label><br/>
+        <input type="text" name="nombre"><br/><br/>
+
+        <label for="etapas">Etapas:</label><br/>
+        <select name="etapas">
         <?php
             while($fila=$resultado->fetch_assoc()){
-                echo '<ul><li>' .$fila["NombreEtapas"]. '</li></ul>';
+                echo '<option value '.$fila["NombreEtapas"].'>'.$fila["NombreEtapas"].'</option>';
             }
         ?>
+        </select>
+        <br/>
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Reiniciar">
+    </form>
 </body>
 </html>

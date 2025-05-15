@@ -14,11 +14,20 @@
     <title>Etapas Desde BBDD</title>
 </head>
 <body>
-    <h1>Etapas:</h1>
+    <h1>Añadir Actividad</h1>
+    <form action="" method="post">
+        <label for="nombre">Actividad: </label><br/>
+        <input type="text" name="nombre"><br/><br/>
+
+        <label for="etapas">Etapas:</label><br/>
         <?php
             while($fila=$resultado->fetch_assoc()){
-                echo '<ul><li>' .$fila["NombreEtapas"]. '</li></ul>';
+                echo '<input type="checkbox" name="etapas[]" value='.$fila["NombreEtapas"].'>' .$fila["NombreEtapas"]. '<br/>';
             }
         ?>
+        <br/>
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Reiniciar">
+    </form>
 </body>
 </html>

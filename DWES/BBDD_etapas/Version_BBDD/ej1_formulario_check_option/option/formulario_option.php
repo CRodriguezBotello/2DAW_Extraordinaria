@@ -23,6 +23,7 @@
         <select name="etapas">
         <?php
             while($fila=$resultado->fetch_assoc()){
+                // añadimos un option nuevo al select por cada fila de etapas que haya en la base de datos
                 echo '<option value='.$fila["IdEtapas"].'>'.$fila["NombreEtapas"].'</option>';
             }
         ?>

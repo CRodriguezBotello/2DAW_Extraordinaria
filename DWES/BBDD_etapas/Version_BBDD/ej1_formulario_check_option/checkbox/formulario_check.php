@@ -22,6 +22,7 @@
         <label for="etapas">Etapas:</label><br/>
         <?php
             while($fila=$resultado->fetch_assoc()){
+                // añadimos un checkbox nuevo por cada fila de etapas que haya en la base de datos
                 echo '<input type="checkbox" name="etapas[]" value='.$fila["IdEtapas"].'>' .$fila["NombreEtapas"]. '<br/>';
             }
         ?>

@@ -1,9 +1,3 @@
-<?php
-    include 'ccheckbox.php';
-
-    $objEtapas= new Ccheckbox();
-    $Etapas=$objEtapas->ListarEtapas();
-?>
 <!DOCTYPE html>
 <html>
 <head>

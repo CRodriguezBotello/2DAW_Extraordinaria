@@ -1,8 +1,3 @@
-<?php
-    include 'coption.php';
-    $objEtapas = new Coption();
-    $Etapas=$objEtapas->ListarEtapas();
-?>
 <!DOCTYPE html>
 <html>
 <head>

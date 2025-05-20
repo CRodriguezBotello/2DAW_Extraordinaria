@@ -1,10 +1,7 @@
 <?php
-    require_once '../../config/conexion_1n.php';
-    $conexion= new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
-    $conexion->set_charset("utf8");
-
-    $resultado= "SELECT IdEtapas, NombreEtapas FROM Etapas";
-    $resultado=$conexion->query($resultado);    
+    include 'coption.php';
+    $objEtapas = new Coption();
+    $Etapas=$objEtapas->etapas();
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,9 +19,9 @@
         <label for="etapas">Etapas:</label><br/>
         <select name="etapas">
         <?php
-            while($fila=$resultado->fetch_assoc()){
-                // añadimos un option nuevo al select por cada fila de etapas que haya en la base de datos
-                echo '<option value='.$fila["IdEtapas"].'>'.$fila["NombreEtapas"].'</option>';
+            foreach ($Etapas as $idEtapa => $etapa) {
+                // recorremos cada indice del array y mostramos su valor en el option
+                echo '<option value='.$idEtapa.'>' .$etapa. '<br/>';
             }
         ?>
         </select>

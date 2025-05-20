@@ -1,5 +1,5 @@
 <?php
-require_once '../../config/conexion_1n.php';
+require_once '../../../config/conexion_1n.php';
     $conexion= new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
     $conexion->set_charset("utf8");
 

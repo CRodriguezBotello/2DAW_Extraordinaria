@@ -1,10 +1,8 @@
 <?php
-    require_once '../../config/conexion.php';
-    $conexion= new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
-    $conexion->set_charset("utf8");
+    include 'ccheckbox.php';
 
-    $resultado= "SELECT IdEtapas, NombreEtapas FROM Etapas";
-    $resultado=$conexion->query($resultado);    
+    $objEtapas= new Ccheckbox();
+    $Etapas=$objEtapas->etapas();
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,10 +19,10 @@
 
         <label for="etapas">Etapas:</label><br/>
         <?php
-            while($fila=$resultado->fetch_assoc()){
-                // añadimos un checkbox nuevo por cada fila de etapas que haya en la base de datos
-                echo '<input type="checkbox" name="etapas[]" value='.$fila["IdEtapas"].'>' .$fila["NombreEtapas"]. '<br/>';
-            }
+                foreach ($Etapas as $idEtapa => $etapa) {
+                    // añadimos un checkbox nuevo por cada fila de etapas que haya en la base de datos
+                    echo '<input type="checkbox" name="etapas[]" value='.$idEtapa.'>' .$etapa. '<br/>';
+                }            
         ?>
         <br/>
         <input type="reset" value="Reiniciar">

@@ -10,7 +10,6 @@
         // echo '<br/>';
         $sql= 'INSERT INTO actividades(NombreActividades, IdEtapas) VALUES("'.$_POST["nombre"].'",'.$_POST["etapas"].');';
         $conexion->query($sql); 
-        echo $conexion->error;
-        echo 'Fila o Filas añadida/s';
+        // echo $conexion->error;
     }
 ?>

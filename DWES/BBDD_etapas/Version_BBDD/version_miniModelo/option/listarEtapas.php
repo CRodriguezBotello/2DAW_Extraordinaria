@@ -3,5 +3,5 @@
     $objEtapas = new Coption();
     $Etapas=$objEtapas->ListarEtapas();
 
-    include 'formulario_option.php';
+    include 'v_formulario_option.php';
 ?>

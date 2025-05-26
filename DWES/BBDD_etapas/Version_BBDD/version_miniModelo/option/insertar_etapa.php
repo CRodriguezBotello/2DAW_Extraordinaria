@@ -3,5 +3,11 @@
     $objEtapas = new Coption();
     $Etapas=$objEtapas->AnadirEtapa();
 
-    include 'listarEtapas.php';
+    if ($Etapas) {
+        include 'listarEtapas.php';
+    }else{
+        var_dump($Etapas);
+        include 'v_error.php';
+    }
+    
 ?>

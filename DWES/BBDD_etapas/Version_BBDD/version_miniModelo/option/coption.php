@@ -11,6 +11,7 @@
             require_once 'mOption.php';
             $objEtapas = new Moption();
             $Etapas=$objEtapas->InsertarEtapa();
+            return $Etapas;
         }
 
         public function AnadirActividad(){

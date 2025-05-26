@@ -1,5 +1,7 @@
 <?php
     require_once 'coption.php';
-    $objEtapas = new Coption();
-    $Etapas=$objEtapas->AnadirActividad();
+    $objActividad = new Coption();
+    $Actividad=$objActividad->AnadirActividad();
+
+    include 'v_final.php';
 ?>

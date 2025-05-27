@@ -5,14 +5,14 @@
 
         public function __construct() {
             require_once 'config/conexion.php';
-            $conexion= new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
-            $conexion->set_charset("utf8");
+            $this->conexion= new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
+            $this->conexion->set_charset("utf8");
         }
 
         public function ListarEtapas(){
 
-            $resultado= "SELECT IdEtapas,NombreEtapas FROM Etapas";
-            $resultado=$this->conexion->query($resultado);
+            $sql= "SELECT IdEtapas,NombreEtapas FROM Etapas";
+            $resultado=$this->conexion->query($sql);
 
             if ($resultado->num_rows > 0) {
                 while($fila=$resultado->fetch_assoc()){

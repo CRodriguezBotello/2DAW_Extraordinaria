@@ -5,21 +5,19 @@
 
         public function __construct() {
             require_once 'config/conexion.php';
-            $conexion= new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
-            $conexion->set_charset("utf8");
+            $this->conexion= new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
+            $this->conexion->set_charset("utf8");
         }
 
         public function ListarActividades(){
 
-            $sql= "SELECT IdActividades, NombreActividades, NombreEtapas FROM actividades 
-                            INNER JOIN etapas ON
-                            actividades.IdEtapas = etapas.IdEtapas";
+            $sql= "SELECT IdActividades, NombreActividades FROM actividades";
             $resultado=$this->conexion->query($sql);
 
             if ($resultado->num_rows > 0) {
                 while($fila=$resultado->fetch_assoc()){
                     
-                    $Actividades[$fila["IdActividades"]]=[$fila["NombreActividades"], $fila["NombreEtapas"]];
+                    $Actividades[$fila["IdActividades"]]=$fila["NombreActividades"];
                 }
             }else{
                 exit('No hay filas en la tabla de Etapas');
@@ -37,6 +35,12 @@
                 $sql= 'INSERT INTO actividades(NombreActividades) VALUES("'.$_POST["nombre"].'");';
                 $this->conexion->query($sql); 
 
+                $IdActividad = $this->conexion->insert_id;
+
+                foreach ($_POST["etapas"] as $etapa) {
+                    $sql = 'INSERT INTO etapas_actividades VALUES ('.$etapa.','.$IdActividad.')';
+                    $this->conexion->query($sql);
+                }
                 // echo $conexion->error;
             }
         }

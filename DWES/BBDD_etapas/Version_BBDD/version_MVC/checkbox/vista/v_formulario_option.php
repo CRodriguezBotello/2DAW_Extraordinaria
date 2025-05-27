@@ -12,14 +12,12 @@
         <input type="text" name="nombre"><br/><br/>
 
         <label for="etapas">Etapas:</label><br/>
-        <select name="etapas">
         <?php
             foreach ($Etapas as $idEtapa => $etapa) {
-                // recorremos cada indice del array y mostramos su valor en el option
-                echo '<option value='.$idEtapa.'>' .$etapa. '<br/>';
+                // añadimos un checkbox nuevo por cada fila de etapas que haya en la base de datos
+                echo '<input type="checkbox" name="etapas[]" value='.$idEtapa.'>' .$etapa. '<br/>';
             }
         ?>
-        </select>
         <br/>
         <br>
         <input type="submit" value="Enviar">

@@ -25,24 +25,34 @@
             return $Actividades;
         }
         
-        public function InsertarActividad(){
+        public function InsertarActividad($nombre, $etapas){
 
-            if (isset($_POST["nombre"]) && !empty($_POST["nombre"]) && isset($_POST["etapas"]) && !empty($_POST["etapas"])) {
+            if (isset($nombre) && !empty($nombre) && isset($etapas) && !empty($etapas)) {
                 // echo $_POST["nombre"];
                 // echo '<br/>';
                 // echo $_POST["etapas"];
                 // echo '<br/>';
-                $sql= 'INSERT INTO actividades(NombreActividades) VALUES("'.$_POST["nombre"].'");';
+                $sql= 'INSERT INTO actividades(NombreActividades) VALUES("'.$nombre.'");';
                 $this->conexion->query($sql); 
 
                 $IdActividad = $this->conexion->insert_id;
 
-                foreach ($_POST["etapas"] as $etapa) {
+                foreach ($etapas as $etapa) {
                     $sql = 'INSERT INTO etapas_actividades VALUES ('.$etapa.','.$IdActividad.')';
                     $this->conexion->query($sql);
                 }
                 // echo $conexion->error;
             }
+        }
+
+        public function ModificarActividad($idActividad, $actividad){
+
+            $sql= 'UPDATE actividades
+	                SET NombreActividades = "'.$actividad.'"
+	                WHERE IdActividades = '.$idActividad.';';
+            $this->conexion->query($sql);
+            echo $this->conexion->error;
+
         }
     }
 ?>

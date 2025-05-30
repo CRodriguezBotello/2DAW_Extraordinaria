@@ -27,22 +27,16 @@
         
         public function InsertarActividad($nombre, $etapas){
 
-            if (isset($nombre) && !empty($nombre) && isset($etapas) && !empty($etapas)) {
-                // echo $_POST["nombre"];
-                // echo '<br/>';
-                // echo $_POST["etapas"];
-                // echo '<br/>';
-                $sql= 'INSERT INTO actividades(NombreActividades) VALUES("'.$nombre.'");';
-                $this->conexion->query($sql); 
+            $sql= 'INSERT INTO actividades(NombreActividades) VALUES("'.$nombre.'");';
+            $this->conexion->query($sql); 
 
-                $IdActividad = $this->conexion->insert_id;
+            $IdActividad = $this->conexion->insert_id;
 
-                foreach ($etapas as $etapa) {
-                    $sql = 'INSERT INTO etapas_actividades VALUES ('.$etapa.','.$IdActividad.')';
-                    $this->conexion->query($sql);
-                }
-                // echo $conexion->error;
+            foreach ($etapas as $etapa) {
+                $sql = 'INSERT INTO etapas_actividades VALUES ('.$etapa.','.$IdActividad.')';
+                $this->conexion->query($sql);
             }
+            
         }
 
         public function ModificarActividad($idActividad, $actividad){
@@ -50,6 +44,14 @@
             $sql= 'UPDATE actividades
 	                SET NombreActividades = "'.$actividad.'"
 	                WHERE IdActividades = '.$idActividad.';';
+            $this->conexion->query($sql);
+            echo $this->conexion->error;
+
+        }
+
+        public function BorrarActividad($idActividad){
+
+            $sql= 'DELETE FROM actividades WHERE IdActividades = '.$idActividad.';';
             $this->conexion->query($sql);
             echo $this->conexion->error;
 

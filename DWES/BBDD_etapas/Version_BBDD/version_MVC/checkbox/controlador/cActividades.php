@@ -2,7 +2,7 @@
     Class CActividades{
 
         public function ListarActividades(){
-            
+
             require_once 'modelo/mActividades.php';
             $objActividad = new MActividades();
             $Actividades=$objActividad->ListarActividades();
@@ -30,6 +30,17 @@
                 require_once 'modelo/mActividades.php';
                 $objActividad = new MActividades();
                 $Actividad=$objActividad->ModificarActividad($idActividad, $actividad);
+            }
+        }
+
+        public function EliminarActividad(){
+            if (isset($_GET["idActividad"]) && !empty($_GET["idActividad"])) {
+
+                $idActividad = $_GET["idActividad"];
+
+                require_once 'modelo/mActividades.php';
+                $objActividad = new MActividades();
+                $Actividad=$objActividad->BorrarActividad($idActividad);
             }
         }
     }

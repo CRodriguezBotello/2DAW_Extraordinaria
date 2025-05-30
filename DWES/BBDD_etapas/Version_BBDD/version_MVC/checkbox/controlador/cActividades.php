@@ -10,7 +10,7 @@
         }
 
         public function AnadirActividad(){
-            if (isset($_POST["nombre"]) && !empty($_POST["nombre"]) && isset($_POST["etapas"]) && !empty($_POST["etapas"])) {
+            if ((isset($_POST["nombre"]) && !empty($_POST["nombre"])) || (isset($_POST["etapas"]) && !empty($_POST["etapas"]))) {
 
                 $nombre = $_POST["nombre"];
                 $etapas = $_POST["etapas"];

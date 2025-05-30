@@ -30,13 +30,17 @@
             $sql= 'INSERT INTO actividades(NombreActividades) VALUES("'.$nombre.'");';
             $this->conexion->query($sql); 
 
-            $IdActividad = $this->conexion->insert_id;
+            if (isset($_POST["etapas"]) && !empty($_POST["etapas"])) {
+                
+                $IdActividad = $this->conexion->insert_id;
 
-            foreach ($etapas as $etapa) {
-                $sql = 'INSERT INTO etapas_actividades VALUES ('.$etapa.','.$IdActividad.')';
-                $this->conexion->query($sql);
+                foreach ($etapas as $etapa) {
+                    $sql = 'INSERT INTO etapas_actividades VALUES ('.$etapa.','.$IdActividad.')';
+                    $this->conexion->query($sql);
+                }
             }
             
+
         }
 
         public function ModificarActividad($idActividad, $actividad){

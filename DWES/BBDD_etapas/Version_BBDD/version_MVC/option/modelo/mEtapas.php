@@ -31,9 +31,8 @@
                 // echo $_POST["etapas"];
                 // echo '<br/>';
                 $sql= 'INSERT INTO etapas(NombreEtapas) VALUES("'.$_POST["nombre"].'");';
-                $resultado= $this->conexion->query($sql); 
+                $this->conexion->query($sql); 
                 // echo $conexion->error;
-                return $resultado;
             }
         }
     }

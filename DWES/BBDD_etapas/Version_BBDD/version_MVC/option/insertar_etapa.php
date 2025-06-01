@@ -3,6 +3,6 @@
     $objEtapas = new CEtapas();
     $objEtapas->AnadirEtapa();
 
-        include 'listarEtapas.php';
+    include 'listarEtapas.php';
     
 ?>

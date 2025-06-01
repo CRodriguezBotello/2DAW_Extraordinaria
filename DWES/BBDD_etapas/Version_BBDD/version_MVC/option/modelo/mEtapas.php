@@ -5,8 +5,8 @@
 
         public function __construct() {
             require_once 'config/conexion_1n.php';
-            $conexion= new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
-            $conexion->set_charset("utf8");
+            $this->conexion= new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
+            $this->conexion->set_charset("utf8");
         }
         
         public function ListarEtapas(){
@@ -27,13 +27,11 @@
 
         public function InsertarEtapa(){
 
-            if (isset($_POST["nombre"]) && !empty($_POST["nombre"])) {  
                 // echo $_POST["etapas"];
                 // echo '<br/>';
                 $sql= 'INSERT INTO etapas(NombreEtapas) VALUES("'.$_POST["nombre"].'");';
                 $this->conexion->query($sql); 
                 // echo $conexion->error;
-            }
         }
     }
 ?>
